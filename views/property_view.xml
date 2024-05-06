@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="property_tree_view" model="ir.ui.view">
+            <field name="name">property.tree</field>
+            <field name="model">property</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="type_id" />
+                    <field name="postcode" />
+                    <field name="date_availability" />
+                    <field name="expected_price" />
+                    <field name="best_offer" />
+                    <field name="selling_price" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="property_form_view" model="ir.ui.view">
+            <field name="name">property.form</field>
+            <field name="model">property</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <group>
+                                <field name="postcode" />
+                                <field name="tag_ids" widget="many2many_tags" />
+                                <field name="type_id" />
+                                <field name="date_availability" />
+                            </group>
+                            <group>
+                                <field name="expected_price" />
+                                <field name="best_offer" />
+                                <field name="selling_price" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <group>
+                                    <field name="bedrooms" />
+                                    <field name="living_area" />
+                                    <field name="facades" />
+                                    <field name="garage" />
+                                    <field name="garden" />
+                                    <field name="garden_area" />
+                                    <field name="garden_orientation" />
+                                    <field name="total_area" />
+                                </group>
+                            </page>
+                            <page string="Offers">
+                                <field name="offer_ids">
+                                    <tree editable="bottom">
+                                        <field name="price" />
+                                        <field name="partner_id" />
+                                        <field name="creation_date" />
+                                        <field name="validity" />
+                                        <field name="deadline" />
+                                        <field name="status" nolabel="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Other Info">
+                                <group>
+                                    <field name="sales_id" />
+                                    <field name="buyer_id" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_property" model="ir.actions.act_window">
+            <field name="name">Property</field>
+            <field name="res_model">property</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="property_tree_view" />
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a property to advertise!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
