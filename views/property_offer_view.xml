@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="property_offer_tree_view" model="ir.ui.view">
+            <field name="name">property_offer.tree</field>
+            <field name="model">property_offer</field>
+            <field name="arch" type="xml">
+                <tree decoration-success="status == 'accepted'" decoration-danger="status == 'refused'">
+                    <field name="price" />
+                    <field name="status" />
+                    <field name="creation_date" />
+                    <field name="validity" />
+                    <field name="deadline" />
+                    <field name="partner_id" />
+                    <field name="property_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="property_offer_gantt_view" model="ir.ui.view">
+            <field name="name">property_offer.gantt</field>
+            <field name="model">property_offer</field>
+            <field name="arch" type="xml">
+                <gantt date_start="creation_date" date_stop="deadline" default_group_by="partner_id" />
+            </field>
+        </record>
+
+        <record id="property_offer_form_view" model="ir.ui.view">
+            <field name="name">property_offer.form</field>
+            <field name="model">property_offer</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="price" />
+                            <field name="status" />
+                            <field name="partner_id" />
+                            <field name="partner_email" />
+                            <field name="partner_phone" />
+                            <field name="property_id" />
+                        </group>
+                        <group>
+                            <field name="creation_date" />
+                            <field name="validity" />
+                            <field name="deadline" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_property_offer" model="ir.actions.act_window">
+            <field name="name">Property Offer</field>
+            <field name="res_model">property_offer</field>
+            <field name="view_mode">tree,gantt,form</field>
+            <field name="view_id" ref="property_offer_tree_view" />
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Property Type!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

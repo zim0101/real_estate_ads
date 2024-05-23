@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="1">
+        <record id="property_type_house" model="property_type">
+            <field name="name">House</field>
+        </record>
+        <record id="property_type_apartment" model="property_type">
+            <field name="name">Apartment</field>
+        </record>
+    </data>
+</odoo>

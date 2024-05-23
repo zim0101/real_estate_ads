@@ -6,3 +6,4 @@ class PropertyTag(models.Model):
     _description = 'Property Tag'
 
     name = fields.Char(string="Property Tag")
+    color = fields.Integer(string="Color")
